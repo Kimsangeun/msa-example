@@ -1,0 +1,33 @@
+server:
+  port: 8000
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      # 공통으로 실행되는 filter를 설정할때에는 global filter 로 설정해준다
+      # global filter를 설정하면 프로세스에서 가장 먼저 실행되고 가장 나중에 실행된다.
+      default-filters:
+        - name: GlobalFilter
+          args:
+            baseMessage: String Cloud Gateway GlobalFilter
+            preLogger: true
+            postLogger: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE  # eureka server에 정보 전달을 위한 주소
+          predicates:
+            - Path=/user-service/**
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/**
+
