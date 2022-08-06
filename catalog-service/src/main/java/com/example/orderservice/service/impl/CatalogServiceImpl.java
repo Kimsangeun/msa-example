@@ -1,8 +1,8 @@
-package com.example.catalogservice.service.impl;
+package com.example.orderservice.service.impl;
 
-import com.example.catalogservice.jpa.CatalogEntity;
-import com.example.catalogservice.jpa.CatalogRepository;
-import com.example.catalogservice.service.CatalogService;
+import com.example.orderservice.jpa.CatalogEntity;
+import com.example.orderservice.jpa.CatalogRepository;
+import com.example.orderservice.service.CatalogService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

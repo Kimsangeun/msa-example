@@ -1,4 +1,4 @@
-package com.example.catalogservice.jpa;
+package com.example.orderservice.jpa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

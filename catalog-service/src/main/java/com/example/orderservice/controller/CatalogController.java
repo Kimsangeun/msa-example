@@ -1,8 +1,8 @@
-package com.example.catalogservice.controller;
+package com.example.orderservice.controller;
 
-import com.example.catalogservice.jpa.CatalogEntity;
-import com.example.catalogservice.service.CatalogService;
-import com.example.catalogservice.vo.ResponseCatalog;
+import com.example.orderservice.jpa.CatalogEntity;
+import com.example.orderservice.service.CatalogService;
+import com.example.orderservice.vo.ResponseCatalog;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.core.env.Environment;
