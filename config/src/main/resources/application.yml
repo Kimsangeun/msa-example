@@ -9,4 +9,4 @@ spring:
     config:
       server:
         git:
-          uri: file:///e/project/git-local-repo
+          uri: file:///E:/project/msa-example
