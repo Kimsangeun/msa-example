@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,13 +25,17 @@ import java.util.List;
 public class UserController {
 
     private final Environment environment;
-
     private final Greeting greeting;
     private final UserService userService;
 
     @GetMapping("/health_check")
-    public String status() {
-        return String.format("It's Working in User Service on PORT %s.", environment.getProperty("local.server.port"));
+    public String status(HttpServletRequest request) {
+        return String.format("It's Working in User Service."
+                + ", port(local.server.port)=" + environment.getProperty("local.server.port")
+                + ", port(server.port)=" + environment.getProperty("server.port")
+                + ", token secret=" + environment.getProperty("token.secret")
+                + ", token expiration time=" + environment.getProperty("token.expiration.time")
+        );
     }
 
     @GetMapping("/welcome")

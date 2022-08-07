@@ -10,3 +10,6 @@ spring:
       server:
         git:
           uri: file:///E:/project/msa-example
+          basedir: file:///E:/project/msa-example
+
+
