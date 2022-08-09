@@ -17,7 +17,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 @Configuration
 @EnableWebSecurity
-public class WebSecurity {
+public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     private final UserService userService;
 
@@ -25,9 +25,8 @@ public class WebSecurity {
 
     private final Environment environment;
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
 //        http.authorizeRequests().antMatchers("/users/**").permitAll();
         http.authorizeRequests()
@@ -37,23 +36,48 @@ public class WebSecurity {
                 .and()
                 .addFilter(getAuthenticationFilter());
 
-        http.headers().frameOptions().disable();
-
-        return http.build();
+        http.headers().frameOptions().disable(); // h2-console 보기 위해서 외부 접속 frame 접속 차단 해제
     }
 
-    private AuthenticationFilter getAuthenticationFilter() {
+    private AuthenticationFilter getAuthenticationFilter() throws Exception {
 
         AuthenticationFilter authenticationFilter = new AuthenticationFilter();
-//        authenticationFilter.setAuthenticationManager(authenticationManager());
-        
+        authenticationFilter.setAuthenticationManager(authenticationManager());
+
         return authenticationFilter;
     }
 
-//    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        return auth.build();
+        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
     }
+
+    /*
+     * WebSecurityConfigurerAdaptor deprecated...
+     */
+
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//
+//        http.csrf().disable();
+////        http.authorizeRequests().antMatchers("/users/**").permitAll();
+//        http.authorizeRequests()
+//                .antMatchers("/**")
+//                .permitAll()
+////                .hasIpAddress("192.168.0.8")
+//                .and()
+//                .addFilter(getAuthenticationFilter());
+//
+//        http.headers().frameOptions().disable();
+//
+//        return http.build();
+//    }
+//
+//
+////    @Bean
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
+//
+//    }
 }

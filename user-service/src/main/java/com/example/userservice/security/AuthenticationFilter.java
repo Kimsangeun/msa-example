@@ -21,10 +21,12 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
-
+        log.info(">>>>>>>Create Authentication<<<<<<<");
         try {
             RequestLogin creds = new ObjectMapper().readValue(request.getInputStream(), RequestLogin.class);
 
+            log.info("INPUT EMAIL : {}", creds.getEmail());
+            log.info("INPUT PASSWORD: {}", creds.getPassword());
 
             return getAuthenticationManager().authenticate(
                     new UsernamePasswordAuthenticationToken(creds.getEmail(), creds.getPassword(), new ArrayList<>())
@@ -39,7 +41,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                                             HttpServletResponse response,
                                             FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-
-        log.debug(((User)authResult.getPrincipal()).getUsername());
+        log.info(">>>>>>>Success Authentication<<<<<<<");
+        log.info("LOGIN EMAIL : {}", ((User)authResult.getPrincipal()).getUsername());
     }
 }
