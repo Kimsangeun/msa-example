@@ -9,7 +9,7 @@ spring:
     config:
       server:
         git:
-          uri: file:///E:/project/msa-example
-          basedir: file:///E:/project/msa-example
+          uri: https://github.com/Kimsangeun/msa-example.git
+          force-pull: false
 
 
