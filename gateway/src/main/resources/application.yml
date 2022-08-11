@@ -43,13 +43,22 @@ spring:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
         - id: user-service
-          uri: lb://USER-SERVICE  # eureka server에 정보 전달을 위한 주소
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/h2-console
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+        - id: user-service
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/user-service/**
             - Method=GET
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
+            - AuthorizationHeaderFilter
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates:
@@ -59,3 +68,6 @@ spring:
           predicates:
             - Path=/order-service/**
 
+token:
+  expiration_time: 86400000
+  secret: user_token
