@@ -5,6 +5,11 @@ server:
 spring:
   application:
     name: user-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   h2:
     console:
       enabled: true
@@ -15,7 +20,6 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test
     username: sa
-
 
 eureka:
   instance:
@@ -38,4 +42,5 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans
+        include: refresh, health, beans, busrefresh
+        # busrefresh: config server에 변경 요청 사항이 들어오면 rabbitmq에 변경 알림, rabbitmq는 다른 microservice에 변경 정보를 push

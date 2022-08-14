@@ -11,6 +11,11 @@ eureka:
 spring:
   application:
     name: gateway-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     gateway:
       # 공통으로 실행되는 filter를 설정할때에는 global filter 로 설정해준다
@@ -22,10 +27,10 @@ spring:
             preLogger: true
             postLogger: true
       routes:
-#        - id: user-service
-#          uri: lb://USER-SERVICE  # eureka server에 정보 전달을 위한 주소
-#          predicates:
-#            - Path=/user-service/**
+        #        - id: user-service
+        #          uri: lb://USER-SERVICE  # eureka server에 정보 전달을 위한 주소
+        #          predicates:
+        #            - Path=/user-service/**
         - id: user-service
           uri: lb://USER-SERVICE  # eureka server에 정보 전달을 위한 주소
           predicates:
@@ -47,8 +52,8 @@ spring:
         - id: user-service
           uri: lb://USER-SERVICE
           predicates:
-            - Path=/user-service/actuator/refresh
-            - Method=POST
+            - Path=/user-service/actuator/**
+            - Method=GET,POST
           filters:
             - RemoveRequestHeader=Cookie
             - RewritePath=/user-service/(?<segment>.*), /$\{segment}
@@ -82,6 +87,9 @@ spring:
           predicates:
             - Path=/order-service/**
 
-token:
-  expiration_time: 86400000
-  secret: user_token
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, beans, httptrace, busrefresh
+        # busrefresh: config server에 변경 요청 사항이 들어오면 rabbitmq에 변경 알림, rabbitmq는 다른 microservice에 변경 정보를 push

@@ -5,11 +5,21 @@ server:
 spring:
   application:
     name: config-service
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
   cloud:
     config:
       server:
         git:
           uri: https://github.com/Kimsangeun/msa-example.git
           force-pull: false
+          default-label: master
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh # config server에 변경 요청 사항이 들어오면 rabbitmq에 변경 알림, rabbitmq는 다른 microservice에 변경 정보를 push
