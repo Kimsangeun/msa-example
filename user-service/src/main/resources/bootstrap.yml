@@ -2,7 +2,8 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888
-      name: config-service # 해당 application name과 같은 Config Server의 application.yml내용을 불러온다.
+      name: user-service # 해당하는 name의 yml파일을 불러온다.
+#      name: config-service # 해당 application name과 같은 Config Server의 application.yml내용을 불러온다.
 #      name: ecommerce
 #  profiles:
-#    active: dev
+#    active: dev # yml 파일의 profile을 지정한다. ex) application-dev.yml

@@ -3,5 +3,5 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test
     username: sa
-    password: '{cipher}AQArSu7XQXvgmvbfmFojqnuRI24iOIRrSDLgZoSSidXfA6/16X4G32LU4ZVvmdXt8Lsst+C3MT+PPzBRuclw/RlrO9H0CumjVdZXFdiRKqeFJQP3+F9sgej99wlEuJagTigsEouQ8n1ztZkg6BFJz+fH4HdvyH6gEbGpA1nmu1Fqe4IYGqHyGwl/p01diuLr2m31IKB3jabjK2uJcoFe3u+Acw+fwNuPC/mKaSVI3ve2M5WLZeWVIWAsDmWSSfk8VerE4Ns4nWrSPmDiNjoHWxu01UHH/X9uBg1IaDSTW/iAYesg3raP9O7wcyfbmXGukOTO3ixitz40/GiraGHT07urcYsHUTcAv3uTLl9ZzuLUupF8Ahq5/05biSzYEFhKN6o='
+    password: '{cipher}AQA8l6zKc7rpZ7DDsFkLjxnm7shzgQwQq3pTzqzE6kOEuyl4bsdBHYFz6qe3qWoJhHayrCYXovO0fyvU1q7FAbSj0sCeBvQYU8Eev4rIvklmjc/614k3RWEoZSAq2QHin37iVCIdQSNvj+7vs+X1uajnC3JDPX1HB7iLCJMjomHLjqKj6wM6G/auLOF1T46xlWUTZ7IQGeU7j5GZgmKehXRWHJCy/Arq1JjcGlO1itG37lKvpctHwRjE683RB6eJ3n5dfiPfjVmlWznJRE7P+ja8Wuydu9vbkhR2qSxXC94YCJGxP6vVcF50ttjVqYIOrPd3ZaegkMg4qziYUVRucnrp01KBjG8qmfxxlQBtglaxPhcgCrh7ayq+RMx/kYONXdo='
     # {cipher} 라는 문자를 통해 암호화된 데이터임을 표시한다.
