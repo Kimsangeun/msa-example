@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password: '{cipher}eae9beb39b0558b6c2ce4a990ddc28176d3d901ec7d389ca882b1eec482957a4'
+    # {cipher} 라는 문자를 통해 암호화된 데이터임을 표시한다.
