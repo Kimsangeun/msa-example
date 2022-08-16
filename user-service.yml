@@ -3,5 +3,5 @@ spring:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:test
     username: sa
-    password: '{cipher}eae9beb39b0558b6c2ce4a990ddc28176d3d901ec7d389ca882b1eec482957a4'
+    password: '{cipher}AQB9CStjqzuEnWY0Rimm6BMwQ22gr3XE1/JitOupa5ksw2WfI2eQQJq0sPoz9iT9l6K6ps15LiGBl8lpSoO9Vv3lFAuM96/ZaMYYpr5+4fzBgoI3Bxin6PpE5HE7ZWcRL9yP1X/9RRKCwFVcNBb5Ji+gnrKa4Yi7xH5B5MbwWtzlfMNEWYHIEQUR6pkHEmoeO1BNzxba3CVU/Ybe2cCmHEC62lxLp4eWTALvLrTRm9Ixrk2WPM6dZFFatig7UfgGmKy1B38cwfkvenESnLwGu61X8Wn0vA4nCwkFPOK2D3z1KQSeqOoa9/n34gyfZhQfqmQ+SGC6SI6xsq3n5PJreFufu/1LVUfx32qW8Lo4SCtW5sNHlVBMYAudGYEGBezBVbU='
     # {cipher} 라는 문자를 통해 암호화된 데이터임을 표시한다.
