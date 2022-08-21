@@ -7,4 +7,6 @@ spring:
     # {cipher} 라는 문자를 통해 암호화된 데이터임을 표시한다.
 
 order_service:
-  url: http://localhost:8000/order-service/%s/orders
+#  url: http://localhost:8000/order-service/%s/orders
+  url: http://ORDER-SERVICE/order-service/%s/orders
+  # RestTemplate Bean에 @LoadBalanced 어노테이션을 추가해주면 url 호출 시 application name으로 호출할 수 있다.
