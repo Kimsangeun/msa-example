@@ -5,3 +5,6 @@ spring:
     username: sa
     password: '{cipher}AQA8l6zKc7rpZ7DDsFkLjxnm7shzgQwQq3pTzqzE6kOEuyl4bsdBHYFz6qe3qWoJhHayrCYXovO0fyvU1q7FAbSj0sCeBvQYU8Eev4rIvklmjc/614k3RWEoZSAq2QHin37iVCIdQSNvj+7vs+X1uajnC3JDPX1HB7iLCJMjomHLjqKj6wM6G/auLOF1T46xlWUTZ7IQGeU7j5GZgmKehXRWHJCy/Arq1JjcGlO1itG37lKvpctHwRjE683RB6eJ3n5dfiPfjVmlWznJRE7P+ja8Wuydu9vbkhR2qSxXC94YCJGxP6vVcF50ttjVqYIOrPd3ZaegkMg4qziYUVRucnrp01KBjG8qmfxxlQBtglaxPhcgCrh7ayq+RMx/kYONXdo='
     # {cipher} 라는 문자를 통해 암호화된 데이터임을 표시한다.
+
+order_service:
+  url: http://localhost:8000/order-service/%s/orders
